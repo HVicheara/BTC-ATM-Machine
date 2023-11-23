@@ -3,15 +3,14 @@ public class Transaction {
     private String customerID;
     private String type;
     private double totalAmount;
-    private double trxPrice;
+
 
     // Full Constructor
-    public Transaction(String transactionID, String customerID, String type, double totalAmount, double trxPrice) {
+    public Transaction(String transactionID, String customerID, String type, double totalAmount) {
         this.transactionID = transactionID;
         this.customerID = customerID;
         this.type = type;
         this.totalAmount = totalAmount;
-        this.trxPrice = trxPrice;
     }
 
     // Accessor methods
@@ -29,11 +28,6 @@ public class Transaction {
 
     public double getTotalAmount() {
         return totalAmount;
-    }
-
-    
-    public double gettrxPrice() {
-        return trxPrice;
     }
 
     // Mutator methods

@@ -1,7 +1,10 @@
 public class BTMMain {
     public static void main(String[] args) {
+        //Bitcoin Price
+        double btcPrice = 37342.20;
+
         // Create a customer
-        Customer customer = new Customer("123456", "John Doe", "555-1234", "123456");
+        Customer customer = new Customer("cus_123456", "John Doe", "(855) 12 345 678", "1850");
 
         // Login the customer
         customer.login();
@@ -13,28 +16,28 @@ public class BTMMain {
         System.out.println("OTP: " + customer.getOtp());
         System.out.println("Is Logged In: " + customer.isLoggedIn());
 
-        // Create a transaction
-        Transaction transaction = new Transaction("T123", "123456", "Deposit", 1000.0, 0.005);
-
-        // Display transaction information
-        System.out.println("\nTransaction ID: " + transaction.getTransactionID());
-        System.out.println("Customer ID: " + transaction.getCustomerID());
-        System.out.println("Transaction Type: " + transaction.getTransactionType());
-        System.out.println("Transaction Amount: " + transaction.getTotalAmount());
-
-        // Create a withdrawal
-        Deposit deposit = new Deposit("Cash", 1500.0);
-
-        // Display withdrawal information
-        System.out.println("\nDeposit Type: " + deposit.getDepositType());
-        System.out.println("Total Deposit Amount: " + deposit.getTotalDepositAmount());
-
         // Create a deposit
-        Withdraw withdrawal = new Withdraw(500.0, 2000.0);
+        Deposit deposit = new Deposit("trx_00001", customer.getCustomerID(), btcPrice, 5000.0, "KHQR");
 
         // Display deposit information
-        System.out.println("\nTotal BTC Sold: " + withdrawal.getTotalBtcSold());
-        System.out.println("Total Withdrawal Amount: " + withdrawal.getTotalWithdrawalAmount());
+        System.out.println("\nTransaction ID: " + deposit.getTransactionID());
+        System.out.println("Customer ID: " + deposit.getCustomerID());
+        System.out.println("Transaction Type: " + deposit.getTransactionType());
+        System.out.println("Transaction Amount: $" + deposit.getTotalAmount());
+        System.out.println("Deposit Type: " + deposit.getDepositType());
+        System.out.println("Total Deposit Amount: $" + deposit.getTotalDepositAmount());
+        System.out.println("Total BTC Bought: " + deposit.getTotalBtcBought() + " BTC");
+
+        // Create a withdraw
+        Withdraw withdrawal = new Withdraw("trx_00002", customer.getCustomerID(), btcPrice, 0.002 );
+
+        // Display withdraw information
+        System.out.println("\nTransaction ID: " + withdrawal.getTransactionID());
+        System.out.println("Customer ID: " + withdrawal.getCustomerID());
+        System.out.println("Transaction Type: " + withdrawal.getTransactionType());
+        System.out.println("Transaction Amount: $" + withdrawal.getTotalAmount());
+        System.out.println("Total BTC Sold: " + withdrawal.getTotalBtcSold() + " BTC");
+        System.out.println("Total Withdrawal Amount: $" + withdrawal.getTotalWithdrawalAmount());
 
         // Logout the customer
         customer.logout();
