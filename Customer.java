@@ -1,9 +1,4 @@
-public class Customer {
-    private String customerID;
-    private String fullName;
-    private String phoneNumber;
-    private String otp;
-    private boolean isLoggedIn;
+public class Customer extends User {
 
     // Full Constructor
     public Customer(String customerID, String fullName, String phoneNumber, String otp) {
@@ -14,34 +9,24 @@ public class Customer {
         this.isLoggedIn = false;
     }
 
-    // Accessor methods
-    public String getCustomerID() {
-        return customerID;
+    // Override the abstract methods
+    @Override
+    public boolean checkInactivity() {
+        return false;
     }
 
-    public String getFullName() {
-        return fullName;
+    @Override
+    public void displayPurchaseDetails() {
+        System.out.println("Purchase details: No purchase details available for customers.");
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public void inputDetails(String fullName, String phoneNumber, String otp) {
+        if (!isLoggedIn) {
+            this.fullName = fullName;
+            this.phoneNumber = phoneNumber;
+            this.otp = otp;
+        } else {
+            System.out.println("Cannot modify details while logged in. Logout first.");
+        }
     }
-
-    public String getOtp() {
-        return otp;
-    }
-
-    public boolean isLoggedIn() {
-        return isLoggedIn;
-    }
-
-    // Mutator methods
-    public void login() {
-        isLoggedIn = true;
-    }
-
-    public void logout() {
-        isLoggedIn = false;
-    }
-
 }
