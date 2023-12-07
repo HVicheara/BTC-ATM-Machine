@@ -1,4 +1,4 @@
-// Deposit.java
+import java.util.Objects;
 
 public class Deposit extends Transaction{
     private String depositType;
@@ -31,4 +31,39 @@ public class Deposit extends Transaction{
         this.depositType = depositType;
     }
 
+    @Override
+    public void displayPurchaseDetails() {
+    }
+
+    @Override
+    public boolean checkInactivity(){
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Deposit{" +
+                "transactionID='" + getTransactionID() + '\'' +
+                ", customerID='" + getCustomerID() + '\'' +
+                ", type='" + getTransactionType() + '\'' +
+                ", totalAmount=" + getTotalAmount() +
+                ", depositType='" + depositType + '\'' +
+                ", totalDepositAmount=" + totalDepositAmount +
+                ", btcPrice=" + btcPrice +
+                ", transactionDateTime=" + getTransactionDateTime() +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Deposit deposit = (Deposit) o;
+        return Objects.equals(getTransactionID(), deposit.getTransactionID());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getTransactionID());
+    }
 }

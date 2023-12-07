@@ -1,8 +1,11 @@
-public class Transaction {
+import java.time.LocalDateTime;
+
+abstract class Transaction {
     private String transactionID;
     private String customerID;
     private String type;
     private double totalAmount;
+    private LocalDateTime transactionDateTime;
 
 
     // Full Constructor
@@ -11,6 +14,7 @@ public class Transaction {
         this.customerID = customerID;
         this.type = type;
         this.totalAmount = totalAmount;
+        this.transactionDateTime= LocalDateTime.now();
     }
 
     // Accessor methods
@@ -29,9 +33,19 @@ public class Transaction {
     public double getTotalAmount() {
         return totalAmount;
     }
-
+    
+    public LocalDateTime getTransactionDateTime(){
+        return transactionDateTime;
+    }
     // Mutator methods
     public void setTotalAmount(double totalAmount) {
         this.totalAmount = totalAmount;
     }
+
+    // Abstract method for checking inactivity
+    public abstract boolean checkInactivity();
+
+    // Abstract method for displaying purchase details
+    public abstract void displayPurchaseDetails();
 }
+
