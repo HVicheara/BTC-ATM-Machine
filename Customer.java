@@ -1,11 +1,23 @@
 public class Customer extends User {
     // Full Constructor
-    public Customer(String customerID, String fullName, String phoneNumber, String otp) {
-        this.customerID = customerID;
+    public Customer(String userID, String fullName, String phoneNumber, String otp, double balance) {
+        this.userID = userID;
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
         this.otp = otp;
-        this.isLoggedIn = false;
+        this.balance = balance;
+    }
+
+    public Customer(String userID, String fullName, String phoneNumber, String otp) {
+        this.userID = userID;
+        this.fullName = fullName;
+        this.phoneNumber = phoneNumber;
+        this.otp = otp;
+    }
+    
+    public Customer(String phoneNumber, String otp) {
+        this.phoneNumber = phoneNumber;
+        this.otp = otp;
     }
 
     // Override the abstract methods

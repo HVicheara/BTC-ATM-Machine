@@ -51,7 +51,7 @@ abstract class User {
     public boolean equals(Object obj) {
         User tmpUser = (User) obj;
        
-        if( this.fullName.equals(tmpUser.fullName) && this.phoneNumber.equals(tmpUser.phoneNumber) )
+        if(this.fullName.equals(tmpUser.fullName) && this.phoneNumber.equals(tmpUser.phoneNumber) )
         {
             return true;
         }
