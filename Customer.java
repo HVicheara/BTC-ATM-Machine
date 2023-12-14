@@ -1,5 +1,4 @@
 public class Customer extends User {
-
     // Full Constructor
     public Customer(String customerID, String fullName, String phoneNumber, String otp) {
         this.customerID = customerID;

@@ -14,7 +14,7 @@ abstract class Transaction {
         this.customerID = customerID;
         this.type = type;
         this.totalAmount = totalAmount;
-        this.transactionDateTime= LocalDateTime.now();
+        this.transactionDateTime = LocalDateTime.now();
     }
 
     // Accessor methods

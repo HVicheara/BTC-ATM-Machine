@@ -1,5 +1,5 @@
 abstract class User {
-    protected String customerID;
+    protected String userID;
     protected String fullName;
     protected String phoneNumber;
     protected String otp;
@@ -7,8 +7,8 @@ abstract class User {
     protected double balance;
 
     // Accessor methods
-    public String getCustomerID() {
-        return this.customerID;
+    public String getuserID() {
+        return this.userID;
     }
 
     public String getFullName() {
@@ -37,23 +37,24 @@ abstract class User {
     // Abstract method for displaying purchase details
     public abstract void displayPurchaseDetails();
 
-     // Method for logging in
-     public void login() {
-        if (!isLoggedIn) {
-            isLoggedIn = true;
-            System.out.println("User logged in.");
-        } else {
-            System.out.println("User is already logged in.");
-        }
+    @Override
+    public String toString() {
+        String tmp = "User is created \n"
+        + "User ID is: "+this.userID 
+        + "\nThe Full name is: "+this.fullName 
+        + "\nThe Phone Number is: "+this.phoneNumber;
+
+        return tmp;
     }
 
-    // Method for logging out
-    public void logout() {
-        if (isLoggedIn) {
-            isLoggedIn = false;
-            System.out.println("User logged out.");
-        } else {
-            System.out.println("User is not logged in.");
+    @Override
+    public boolean equals(Object obj) {
+        User tmpUser = (User) obj;
+       
+        if( this.fullName.equals(tmpUser.fullName) && this.phoneNumber.equals(tmpUser.phoneNumber) )
+        {
+            return true;
         }
+        return false;
     }
 }
