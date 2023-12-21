@@ -3,6 +3,7 @@ abstract class User {
     protected String fullName;
     protected String phoneNumber;
     protected String otp;
+    protected String role;
     protected boolean isLoggedIn;
     protected double balance;
 
@@ -23,6 +24,10 @@ abstract class User {
         return this.otp;
     }
 
+    public String getRole() {
+        return this.role;
+    }
+
     public boolean isLoggedIn() {
         return this.isLoggedIn;
     }
@@ -31,23 +36,19 @@ abstract class User {
         return this.balance;
     }
 
-    // Abstract method for checking inactivity
-    public abstract boolean checkInactivity();
-
     // Abstract method for displaying purchase details
-    public abstract void displayPurchaseDetails();
+    public abstract void displayAllTransactions();
 
-    @Override
     public String toString() {
         String tmp = "User is created \n"
         + "User ID is: "+this.userID 
         + "\nThe Full name is: "+this.fullName 
-        + "\nThe Phone Number is: "+this.phoneNumber;
+        + "\nThe Phone Number is: "+this.phoneNumber
+        + "\n User role: " + this.role;
 
         return tmp;
     }
 
-    @Override
     public boolean equals(Object obj) {
         User tmpUser = (User) obj;
        
@@ -56,5 +57,24 @@ abstract class User {
             return true;
         }
         return false;
+    }
+
+    public void inputDetails(String fullName, String phoneNumber, String otp) {
+        if (!isLoggedIn) {
+            this.fullName = fullName;
+            this.phoneNumber = phoneNumber;
+            this.otp = otp;
+        } else {
+            System.out.println("Cannot modify details while logged in. Logout first.");
+        }
+    }
+
+    public void inputDetails(String fullName, String phoneNumber) {
+        if (!isLoggedIn) {
+            this.fullName = fullName;
+            this.phoneNumber = phoneNumber;
+        } else {
+            System.out.println("Cannot modify details while logged in. Logout first.");
+        }
     }
 }

@@ -6,6 +6,7 @@ public class Customer extends User {
         this.phoneNumber = phoneNumber;
         this.otp = otp;
         this.balance = balance;
+        this.role = "customer";
     }
 
     public Customer(String userID, String fullName, String phoneNumber, String otp) {
@@ -20,24 +21,8 @@ public class Customer extends User {
         this.otp = otp;
     }
 
-    // Override the abstract methods
     @Override
-    public boolean checkInactivity() {
-        return false;
-    }
-
-    @Override
-    public void displayPurchaseDetails() {
-        System.out.println("Purchase details: No purchase details available for customers.");
-    }
-
-    public void inputDetails(String fullName, String phoneNumber, String otp) {
-        if (!isLoggedIn) {
-            this.fullName = fullName;
-            this.phoneNumber = phoneNumber;
-            this.otp = otp;
-        } else {
-            System.out.println("Cannot modify details while logged in. Logout first.");
-        }
+    public void displayAllTransactions() {
+        System.out.println("Loading purchase detail of customer.");
     }
 }

@@ -10,9 +10,12 @@ public class TestAuth {
 
         System.out.println("1. Register");
         System.out.println("2. Login");
-        System.out.println("other. Quit");
+        System.out.println("Other. Quit");
+        System.out.print("Input: ");
         choice = sc.nextInt();
+        System.out.println("");
         String tmp = sc.nextLine();
+        
 
         switch (choice) {
             case 1:

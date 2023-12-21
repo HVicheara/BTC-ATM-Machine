@@ -39,13 +39,6 @@ public class Login {
         System.out.println("OTP has been sent!");
     }
 
-    private static void inputOtp() {
-        Scanner in = new Scanner(System.in);
-        System.out.print("Please enter OTP: ");
-        otp = in.nextLine();
-        in.close();
-    }
-
     public static boolean verifyOtp(String phoneNumber, String enteredOtp) {
         getUserList();
 
