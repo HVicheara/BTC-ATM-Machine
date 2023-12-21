@@ -13,6 +13,15 @@ public class Admin extends User {
         this.otp = otp;
         this.role = "admin";
     }
+    
+    public String getCustomerInfo (Customer customer){
+        String tmp = "User is created \n"
+        + "User ID is: " + customer.userID 
+        + "\nThe Full name is: " + customer.fullName 
+        + "\nThe Phone Number is: " + customer.phoneNumber
+        + "\n User role: " + customer.role;
+        return tmp;
+    }
 
     @Override
     public void displayAllTransactions() {
