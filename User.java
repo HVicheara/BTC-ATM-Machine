@@ -32,6 +32,10 @@ abstract class User {
         return this.isLoggedIn;
     }
 
+    public void setIsLoggedIn(boolean isLoggedIn){
+        this.isLoggedIn = isLoggedIn;
+    }
+
     public double getTotalBalance() {
         return this.balance;
     }
