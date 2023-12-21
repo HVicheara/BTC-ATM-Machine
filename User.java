@@ -59,6 +59,7 @@ abstract class User {
         return false;
     }
 
+    //Overloading
     public void inputDetails(String fullName, String phoneNumber, String otp) {
         if (!isLoggedIn) {
             this.fullName = fullName;
@@ -69,6 +70,7 @@ abstract class User {
         }
     }
 
+    //Overloading
     public void inputDetails(String fullName, String phoneNumber) {
         if (!isLoggedIn) {
             this.fullName = fullName;
