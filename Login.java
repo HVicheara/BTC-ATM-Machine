@@ -1,11 +1,9 @@
-import java.util.Scanner;
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
 public class Login {
-    private static String otp;
     static ArrayList<Customer> userList = new ArrayList<Customer>(); 
     
     public static void getUserList() {
