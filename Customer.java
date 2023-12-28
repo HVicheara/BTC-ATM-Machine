@@ -1,5 +1,6 @@
 public class Customer extends User {
     private double btcUnitPrice = 43593.50;
+    private double rielUsdExchangeRate = 4100;
     // Full Constructor
     public Customer(String userID, String fullName, String phoneNumber, String otp, double balance) {
         this.userID = userID;
@@ -25,6 +26,7 @@ public class Customer extends User {
     public void withDraw(double btcAmount){
         if(this.balance > btcAmount){
             balance -= btcAmount;
+            Transaction.addTrx(this.userID, "Withdraw", btcAmount, "BTC");
             System.out.println("Customer withdrawn: " + btcAmount + "successfully");
             System.out.println(btcAmount + " BTC = " + btcAmount * btcUnitPrice);
         }else{
@@ -32,9 +34,22 @@ public class Customer extends User {
         }
     }
 
+    // Overloading
     public void deposit(double usdAmount){
         if(usdAmount > 0.0){
             balance += usdAmount / btcUnitPrice;
+            Transaction.addTrx(this.userID, "Deposit", usdAmount / btcUnitPrice, "BTC");
+        }else{
+            System.out.println("Please deposit fund.");
+        }
+    }
+
+    // Overloading
+    public void deposit(double usdAmount, double rielAmount){
+        if(usdAmount > 0.0 || rielAmount > 0.0){
+            double totalUsd = usdAmount + (rielAmount / rielUsdExchangeRate);
+            balance += totalUsd / btcUnitPrice;
+            Transaction.addTrx(this.userID, "Deposit", usdAmount / btcUnitPrice, "BTC");
         }else{
             System.out.println("Please deposit fund.");
         }

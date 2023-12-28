@@ -1,0 +1,3 @@
+trxId/userId/type/amount/currency/timestamp
+3767/1234/Deposit/0.0022939199651324164/BTC/2023-12-28T14:18:58.665
+

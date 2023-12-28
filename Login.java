@@ -68,7 +68,7 @@ public class Login {
         boolean isAuthenticated = verifyOtp(loginUser.getPhoneNumber(), loginUser.getOtp());
         
         loginUser.setIsLoggedIn(isAuthenticated);
-        
+
         if (isAuthenticated) {
             
             System.out.println("User is logged in successfully.");
