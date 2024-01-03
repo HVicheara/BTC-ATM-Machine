@@ -4,6 +4,9 @@ public class Test {
         john.deposit(100);
         System.out.println("Balance: " + john.getTotalBalance());
         john.checkBalance();
-        john.checkBalance("USD");
+        john.displayAllTransactions();
+
+        Admin admin = new Admin("01234567", "1234");
+        admin.displayAllTransactions();
     }
 }

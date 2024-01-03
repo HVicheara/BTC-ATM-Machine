@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Admin extends User {
     // Full Constructor
     public Admin(String userID, String fullName, String phoneNumber, String otp) {
@@ -25,14 +27,10 @@ public class Admin extends User {
 
     @Override
     public void displayAllTransactions() {
-        System.out.println("No transactions for Admin");
-    }
-
-    @Override
-    public double getTotalBalance() {
-        System.out.println("No Balance for Admin");
-        return 0.0;
-    }
-
-    
+        List<TransactionReader.Transaction> allTransactions = TransactionReader.readAllTransactions("transactions.txt");
+        System.out.println("All transactions:");
+        for (TransactionReader.Transaction transaction : allTransactions) {
+            System.out.println(transaction);
+        }
+    }    
 }

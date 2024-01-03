@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Customer extends User {
     // Add Currency
     Currency btc = Currency.getCurrencyByCode("BTC");
@@ -78,7 +80,18 @@ public class Customer extends User {
     }
 
     @Override
+    public String toString(){
+        String customerTmp = super.toString();
+        customerTmp += "\n Balance: " + this.balance + " BTC";
+        return customerTmp;
+    }
+
+    @Override
     public void displayAllTransactions() {
-        System.out.println("Loading purchase detail of customer.");
+        List<TransactionReader.Transaction> userTransactions = TransactionReader.readAndFilterTransactions("transactions.txt", userID);
+        System.out.println("Transactions for user " + userID + ":");
+        for (TransactionReader.Transaction transaction : userTransactions) {
+            System.out.println(transaction);
+        }
     }
 }

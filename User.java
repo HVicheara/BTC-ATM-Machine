@@ -49,7 +49,7 @@ abstract class User {
         this.walletAddress = newAddress;
     }
 
-    // Abstract method for displaying purchase details
+    // Abstract method for displaying all transactions
     public abstract void displayAllTransactions();
 
     public String toString() {
@@ -57,8 +57,7 @@ abstract class User {
         + "User ID is: "+this.userID 
         + "\nThe Full name is: "+this.fullName 
         + "\nThe Phone Number is: "+this.phoneNumber
-        + "\n User role: " + this.role
-        + "\n Balance: " + this.balance + " BTC";
+        + "\n User role: " + this.role;
 
         return tmp;
     }

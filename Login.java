@@ -15,7 +15,12 @@ public class Login {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             // Read each line from the file
             String line;
+            boolean isFirstRow = true;
             while ((line = bufferedReader.readLine()) != null) {
+                if (isFirstRow) {
+                    isFirstRow = false;
+                    continue; // Skip the first row
+                }
                 // Process the line as needed
                 // System.out.println(line);
                 String[] parts = line.split("/");
