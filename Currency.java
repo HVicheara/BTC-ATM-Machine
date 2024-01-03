@@ -10,8 +10,6 @@ public class Currency {
     }
 
     public static Currency getCurrencyByCode(String currencyCode) {
-        // Replace this with a real implementation to fetch Currency object by code
-        // For simplicity, let's assume you have a list of supported currencies
         Currency btc = new Currency("BTC", "₿", 43593.50);
         Currency usd = new Currency("USD", "$", 1);
         Currency khr = new Currency("KHR", "R", 4100);
