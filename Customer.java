@@ -47,10 +47,12 @@ public class Customer extends User {
         }
     }
 
+    // Overloading
     public void checkBalance() {
         System.out.println("Current Balance: " + balance + " BTC");
     }
 
+    // Overloading
     public void checkBalance(String currencyCode) {
         try {
             Currency targetCurrency = Currency.getCurrencyByCode(currencyCode);

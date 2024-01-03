@@ -4,6 +4,6 @@ public class Test {
         john.deposit(100);
         System.out.println("Balance: " + john.getTotalBalance());
         john.checkBalance();
-        john.checkBalance("JPY");
+        john.checkBalance("USD");
     }
 }
