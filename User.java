@@ -4,6 +4,7 @@ abstract class User {
     protected String phoneNumber;
     protected String otp;
     protected String role;
+    protected String walletAddress;
     protected boolean isLoggedIn;
     protected double balance;
 
@@ -28,16 +29,24 @@ abstract class User {
         return this.role;
     }
 
+    public String getWalletAddress() {
+        return this.walletAddress;
+    }
+
     public boolean isLoggedIn() {
         return this.isLoggedIn;
+    }
+
+    public double getTotalBalance() {
+        return this.balance;
     }
 
     public void setIsLoggedIn(boolean isLoggedIn){
         this.isLoggedIn = isLoggedIn;
     }
 
-    public double getTotalBalance() {
-        return this.balance;
+    public void setWalletAddress(String newAddress){
+        this.walletAddress = newAddress;
     }
 
     // Abstract method for displaying purchase details
