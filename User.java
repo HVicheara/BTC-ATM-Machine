@@ -57,7 +57,8 @@ abstract class User {
         + "User ID is: "+this.userID 
         + "\nThe Full name is: "+this.fullName 
         + "\nThe Phone Number is: "+this.phoneNumber
-        + "\n User role: " + this.role;
+        + "\n User role: " + this.role
+        + "\n Balance: " + this.balance + " BTC";
 
         return tmp;
     }
