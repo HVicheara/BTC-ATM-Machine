@@ -19,7 +19,7 @@ public class Register {
 
         String WritingContent = userId + "/" + fullName + "/" + phoneNumber + "/" + otp + "/" + 0.0;
 
-        Customer user1 = new Customer(userId, fullName, phoneNumber, otp, 0.0);
+        Customer user1 = new Customer(userId, fullName, phoneNumber, otp, 0.0, "0xabced");
         System.out.println(user1);
 
         try {

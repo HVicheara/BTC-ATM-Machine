@@ -1,14 +1,18 @@
 public class Customer extends User {
-    private double btcUnitPrice = 43593.50;
-    private double rielUsdExchangeRate = 4100;
+    // Add Currency
+    Currency btc = Currency.getCurrencyByCode("BTC");
+    Currency usd = Currency.getCurrencyByCode("USD");
+    Currency khr = Currency.getCurrencyByCode("KHR");
+
     // Full Constructor
-    public Customer(String userID, String fullName, String phoneNumber, String otp, double balance) {
+    public Customer(String userID, String fullName, String phoneNumber, String otp, double balance, String walletAddress) {
         this.userID = userID;
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
         this.otp = otp;
         this.balance = balance;
         this.role = "customer";
+        this.walletAddress = walletAddress;
     }
 
     public Customer(String userID, String fullName, String phoneNumber, String otp) {
@@ -28,30 +32,46 @@ public class Customer extends User {
             balance -= btcAmount;
             Transaction.addTrx(this.userID, "Withdraw", btcAmount, "BTC");
             System.out.println("Customer withdrawn: " + btcAmount + "successfully");
-            System.out.println(btcAmount + " BTC = " + btcAmount * btcUnitPrice);
+            System.out.println(btcAmount + " BTC = " + btcAmount * btc.getExchangeRate());
         }else{
             System.out.println("Insufficient fund.");
         }
     }
 
-    // Overloading
     public void deposit(double usdAmount){
         if(usdAmount > 0.0){
-            balance += usdAmount / btcUnitPrice;
-            Transaction.addTrx(this.userID, "Deposit", usdAmount / btcUnitPrice, "BTC");
+            balance += usdAmount / btc.getExchangeRate();
+            Transaction.addTrx(this.userID, "Deposit", usdAmount / btc.getExchangeRate(), "BTC");
         }else{
             System.out.println("Please deposit fund.");
         }
     }
 
-    // Overloading
-    public void deposit(double usdAmount, double rielAmount){
-        if(usdAmount > 0.0 || rielAmount > 0.0){
-            double totalUsd = usdAmount + (rielAmount / rielUsdExchangeRate);
-            balance += totalUsd / btcUnitPrice;
-            Transaction.addTrx(this.userID, "Deposit", usdAmount / btcUnitPrice, "BTC");
-        }else{
-            System.out.println("Please deposit fund.");
+    public void checkBalance() {
+        System.out.println("Current Balance: " + balance + " BTC");
+    }
+
+    public void checkBalance(String currencyCode) {
+        try {
+            Currency targetCurrency = Currency.getCurrencyByCode(currencyCode);
+            if (targetCurrency == null) {
+                throw new UnsupportedOperationException("Unsupported currency: " + currencyCode);
+            }else{
+                switch (currencyCode){
+                    case "KHR":
+                        System.out.println("Current Balance: " + balance * btc.getExchangeRate() * khr.getExchangeRate() + " " + currencyCode);
+                        break;
+                    case "USD":
+                        System.out.println("Current Balance: " + balance * btc.getExchangeRate() + " " + currencyCode);
+                        break;
+                    default:
+                        System.out.println("Current Balance: " + balance * btc.getExchangeRate() + " " + currencyCode);
+                        break;
+                }
+            }
+            
+        } catch (UnsupportedOperationException e) {
+            System.out.println("Unsupported currency: " + currencyCode);
         }
     }
 
