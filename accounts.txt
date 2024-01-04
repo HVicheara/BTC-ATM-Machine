@@ -1,2 +1,3 @@
-userId/fullName/phoneNumber/otp/balance/walletAddress/membership/loyaltyPoints
-0157/John Doe/01234567/6718/9.621388509754892/0xabc/Silver/0
+userId/fullName/role/phoneNumber/otp/balance/walletAddress/membership/loyaltyPoints
+0157/John Doe/customer/01234567/6718/9.621388509754892/0xabc/Silver/0
+006324/Jane Doe/customer/012345698/0907/0.0/0xabc/Gold/0

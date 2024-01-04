@@ -138,9 +138,9 @@ public class Customer extends User {
                     continue; // Skip the first row
                 }
                 String[] parts = line.split("/");
-                if (parts.length == 6 && parts[0].equals(userID)) {
+                if (parts.length == 9 && parts[0].equals(userID)) {
                     // Update the balance field with the new balance
-                    parts[4] = String.valueOf(balance);
+                    parts[5] = String.valueOf(balance);
                     // Update the loyaltyPoint field with the new loyaltyPoints
                     parts[7] = String.valueOf(loyaltyPoints);
                     // Reconstruct the line with updated balance
@@ -174,8 +174,8 @@ public class Customer extends User {
                 }
 
                 String[] parts = line.split("/");
-                if (parts.length == 6 && parts[0].equals(userID)) {
-                    return Double.parseDouble(parts[4]); // Return the balance from the file
+                if (parts.length == 9 && parts[0].equals(userID)) {
+                    return Double.parseDouble(parts[5]); // Return the balance from the file
                 }
             }
         } catch (IOException | NumberFormatException e) {

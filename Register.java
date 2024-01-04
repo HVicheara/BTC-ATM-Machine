@@ -1,4 +1,3 @@
-import java.util.Random;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -11,7 +10,7 @@ public class Register {
         String userId = IdGenerator.generateUserId();
         String otp = IdGenerator.generateOtp();
 
-        String WritingContent = userId + "/" + fullName + "/" + phoneNumber + "/" + otp + "/" + 0.0 + "/" + walletAddress + "/" + membership + "/" + 0;
+        String WritingContent = userId + "/" + fullName + "/" + "customer" + "/" + phoneNumber + "/" + otp + "/" + 0.0 + "/" + walletAddress + "/" + membership + "/" + 0;
 
         System.out.println("OTP: " + otp);
 

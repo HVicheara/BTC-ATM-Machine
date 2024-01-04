@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -24,7 +25,7 @@ public class Login {
                 // Process the line as needed
                 // System.out.println(line);
                 String[] parts = line.split("/");
-                Customer newCustomer = new Customer(parts[0], parts[1], parts[2], parts[3]);
+                Customer newCustomer = new Customer(parts[0], parts[1], parts[3], parts[4]);
                 userList.add(newCustomer);
             }
 
@@ -38,9 +39,33 @@ public class Login {
     }
 
 
-    private static void sendOtp(String otp) {
+    public static void sendOtp(String phoneNumber) {
         System.out.println("OTP has been sent!");
-        System.out.println("OTP: " + otp);
+        String otp = getOtpFromAccountsFile(phoneNumber);
+        System.out.println("OTP: " + otp +"\n");
+    }
+
+    private static String getOtpFromAccountsFile(String phoneNumber) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("accounts.txt"))) {
+            String line;
+            boolean isFirstRow = true;
+            while ((line = reader.readLine()) != null) {
+                if (isFirstRow) {
+                    isFirstRow = false;
+                    continue; // Skip the first row
+                }
+
+                String[] parts = line.split("/");
+                if (parts.length == 9 && parts[3].equals(phoneNumber)) {
+                    return parts[4]; // Return the balance from the file
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        throw new NoSuchElementException("User not found");
+
     }
 
     public static boolean verifyOtp(String phoneNumber, String enteredOtp) {
@@ -68,7 +93,6 @@ public class Login {
     }
 
     public static void loginUser(Customer loginUser) {
-        sendOtp(loginUser.getOtp());
         getUserList();
 
         boolean isAuthenticated = verifyOtp(loginUser.getPhoneNumber(), loginUser.getOtp());

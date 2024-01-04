@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
-public class TestAuth {
-    public static void main(String[] args) {
+public class Auth {
+    public static void start() {
         Scanner sc = new Scanner(System.in);
         String tmpFullName;
         String tmpPhoneNumber;
@@ -35,7 +35,7 @@ public class TestAuth {
                 tmpWalletAddress = sc.nextLine();
                 System.out.println("");
 
-                System.out.print("Here are our available membership plans: Silver, Gold, Diamond");
+                System.out.println("Here are our available membership plans: Silver, Gold, Diamond");
                 System.out.print("Input Your Preferred Membership: ");
                 tmpMembership = sc.nextLine();
                 System.out.println("");
@@ -50,11 +50,14 @@ public class TestAuth {
                 tmpPhoneNumber = sc.nextLine();
                 System.out.println("");
 
+                Login.sendOtp(tmpPhoneNumber);
+                
                 System.out.print("Input OTP: ");
                 tmpOtp = sc.nextLine();
                 System.out.println("");
 
                 Customer tmpUser = new Customer(tmpPhoneNumber, tmpOtp);
+                
                 Login.loginUser(tmpUser);
             default:
                 break;
