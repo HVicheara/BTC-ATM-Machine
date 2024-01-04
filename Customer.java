@@ -36,8 +36,8 @@ public class Customer extends User {
             if(this.balance > btcAmount){
                 balance -= btcAmount;
                 Transaction.addTrx(this.userID, "Withdraw", btcAmount, "BTC");
-                System.out.println("Withdrawn: " + btcAmount + "successfully.");
-                System.out.println(btcAmount + " " + btc.getCode() + " = " + btcAmount * btc.getExchangeRate());
+                System.out.println("Withdrawn: " + btcAmount + " " + btc.getCode() + " successfully.");
+                System.out.println(btcAmount + " " + btc.getCode() + " = " + usd.getSymbol() + btcAmount * btc.getExchangeRate());
                 updateBalance();
             }else{
                 System.out.println("Insufficient fund.");

@@ -4,7 +4,9 @@ public class Test {
         System.out.println(john.isLoggedIn());
         Login.loginUser(john);
         System.out.println(john.isLoggedIn());
-        //john.withdraw(10000000);
+        john.checkBalance();
+        //john.withdraw(20);
+        john.deposit(10000);
         //System.out.println("Balance: " + john.getTotalBalance());
         john.checkBalance();
         //john.displayAllTransactions();

@@ -38,8 +38,9 @@ public class Login {
     }
 
 
-    private static void sendOtp() {
+    private static void sendOtp(String otp) {
         System.out.println("OTP has been sent!");
+        System.out.println("OTP: " + otp);
     }
 
     public static boolean verifyOtp(String phoneNumber, String enteredOtp) {
@@ -67,7 +68,7 @@ public class Login {
     }
 
     public static void loginUser(Customer loginUser) {
-        sendOtp();
+        sendOtp(loginUser.getOtp());
         getUserList();
 
         boolean isAuthenticated = verifyOtp(loginUser.getPhoneNumber(), loginUser.getOtp());
