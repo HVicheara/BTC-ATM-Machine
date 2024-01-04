@@ -5,17 +5,11 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Register {
-    private static String generateRandomId() {
-        int randomUserId = new Random().nextInt(9999) + 1;
-
-        return String.format("%04d", randomUserId);
-    }
-
     public static void registerUser(String fullName, String phoneNumber, String walletAddress){
         Scanner sc = new Scanner(System.in);
         String filePath = "accounts.txt";
-        String userId = generateRandomId();
-        String otp = generateRandomId();
+        String userId = IdGenerator.generateUserId();
+        String otp = IdGenerator.generateOtp();
 
         String WritingContent = userId + "/" + fullName + "/" + phoneNumber + "/" + otp + "/" + 0.0 + "/" + walletAddress;
 

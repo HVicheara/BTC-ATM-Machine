@@ -1,7 +1,11 @@
 import java.util.List;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Random;
+
 public class Customer extends User {
+    // Loyalty Points
+    private int loyaltyPoints;
     // Add Currency
     Currency btc = Currency.getCurrencyByCode("BTC");
     Currency usd = Currency.getCurrencyByCode("USD");
@@ -16,6 +20,7 @@ public class Customer extends User {
         this.balance = balance;
         this.role = "customer";
         this.walletAddress = walletAddress;
+        this.loyaltyPoints = 0;
     }
 
     public Customer(String userID, String fullName, String phoneNumber, String otp) {
@@ -24,11 +29,13 @@ public class Customer extends User {
         this.phoneNumber = phoneNumber;
         this.otp = otp;
         this.balance = getBalanceFromAccountsFile();
+        this.loyaltyPoints = 0;
     }
     
     public Customer(String phoneNumber, String otp) {
         this.phoneNumber = phoneNumber;
         this.otp = otp;
+        this.loyaltyPoints = 0;
     }
 
     public void withdraw(double btcAmount){
@@ -38,6 +45,7 @@ public class Customer extends User {
                 Transaction.addTrx(this.userID, "Withdraw", btcAmount, "BTC");
                 System.out.println("Withdrawn: " + btcAmount + " " + btc.getCode() + " successfully.");
                 System.out.println(btcAmount + " " + btc.getCode() + " = " + usd.getSymbol() + btcAmount * btc.getExchangeRate());
+                this.loyaltyPoints = new Random().nextInt(10);
                 updateBalance();
             }else{
                 System.out.println("Insufficient fund.");
@@ -55,6 +63,7 @@ public class Customer extends User {
                 Transaction.addTrx(this.userID, "Deposit", usdAmount / btc.getExchangeRate(), "BTC");
                 System.out.println("Deposit: " + usd.getSymbol() + usdAmount + " successfully.");
                 System.out.println(usd.getSymbol() + usdAmount + " = " + (usdAmount / btc.getExchangeRate()) + " " + btc.getCode());
+                this.loyaltyPoints = new Random().nextInt(10);
                 updateBalance();
             }else{
                 System.out.println("Please deposit fund.");
@@ -168,6 +177,10 @@ public class Customer extends User {
 
         // Return 0.0 if the user is not found or if there's an error
         return 0.0;
+    }
+
+    public int getLoyaltyPoints() {
+        return loyaltyPoints;
     }
 }
 
