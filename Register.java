@@ -19,8 +19,9 @@ public class Register {
 
         String WritingContent = userId + "/" + fullName + "/" + phoneNumber + "/" + otp + "/" + 0.0 + "/" + walletAddress;
 
-        Customer user1 = new Customer(userId, fullName, phoneNumber, otp, 0.0, "0xabced");
+        Customer user1 = new Customer(userId, fullName, phoneNumber, otp, 0.0, walletAddress);
         //System.out.println(user1);
+        System.out.println("OTP: " + otp);
 
         try {
             // Create a FileWriter in append mode by passing true as the second parameter

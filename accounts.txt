@@ -1,4 +1,3 @@
-userId/fullName/phoneNumber/otp/balance
-3635/Test/01246789/7659/0.0
-0923/Test2/01243489/9031/0.0
+userId/fullName/phoneNumber/otp/balance/walletAddress
+
 
