@@ -1,3 +1,2 @@
 userId/fullName/phoneNumber/otp/balance/walletAddress
-
-
+0157/John Doe/01234567/6718/229.39199651324165/0xabc

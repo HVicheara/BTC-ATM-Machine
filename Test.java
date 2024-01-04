@@ -1,12 +1,15 @@
 public class Test {
     public static void main(String args[]){
-        Customer john = new Customer("1234", "John Doe", "012345678", "1234");
-        //john.deposit(100);
-        System.out.println("Balance: " + john.getTotalBalance());
+        Customer john = new Customer("0157", "John Doe", "01234567", "6718");
+        System.out.println(john.isLoggedIn());
+        Login.loginUser(john);
+        System.out.println(john.isLoggedIn());
+        //john.withdraw(10000000);
+        //System.out.println("Balance: " + john.getTotalBalance());
         john.checkBalance();
-        john.displayAllTransactions();
+        //john.displayAllTransactions();
 
-        Admin admin = new Admin("01234567", "1234");
-        admin.displayAllTransactions();
+        //Admin admin = new Admin("01234567", "1234");
+        //admin.displayAllTransactions();
     }
 }
