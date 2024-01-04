@@ -4,15 +4,17 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Customer extends User {
-    // Loyalty Points
-    private int loyaltyPoints;
+    protected String membership;
+    protected int loyaltyPoints;
+
+
     // Add Currency
     Currency btc = Currency.getCurrencyByCode("BTC");
     Currency usd = Currency.getCurrencyByCode("USD");
     Currency khr = Currency.getCurrencyByCode("KHR");
 
     // Full Constructor
-    public Customer(String userID, String fullName, String phoneNumber, String otp, double balance, String walletAddress) {
+    public Customer(String userID, String fullName, String phoneNumber, String otp, double balance, String walletAddress, String membership) {
         this.userID = userID;
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
@@ -20,6 +22,7 @@ public class Customer extends User {
         this.balance = balance;
         this.role = "customer";
         this.walletAddress = walletAddress;
+        this.membership = membership;
         this.loyaltyPoints = 0;
     }
 
@@ -29,6 +32,7 @@ public class Customer extends User {
         this.phoneNumber = phoneNumber;
         this.otp = otp;
         this.balance = getBalanceFromAccountsFile();
+        this.membership = "Silver";
         this.loyaltyPoints = 0;
     }
     
@@ -36,6 +40,7 @@ public class Customer extends User {
         this.phoneNumber = phoneNumber;
         this.otp = otp;
         this.loyaltyPoints = 0;
+        this.membership = "Silver";
     }
 
     public void withdraw(double btcAmount){
@@ -136,6 +141,8 @@ public class Customer extends User {
                 if (parts.length == 6 && parts[0].equals(userID)) {
                     // Update the balance field with the new balance
                     parts[4] = String.valueOf(balance);
+                    // Update the loyaltyPoint field with the new loyaltyPoints
+                    parts[7] = String.valueOf(loyaltyPoints);
                     // Reconstruct the line with updated balance
                     line = String.join("/", parts);
                 }
@@ -179,8 +186,16 @@ public class Customer extends User {
         return 0.0;
     }
 
+    public String getMembership() {
+        return membership;
+    }
+
     public int getLoyaltyPoints() {
         return loyaltyPoints;
+    }
+
+    public void setMembership(String newMembership) {
+        this.membership = newMembership;
     }
 }
 

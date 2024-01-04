@@ -7,6 +7,7 @@ abstract class User {
     protected String walletAddress;
     protected boolean isLoggedIn;
     protected double balance;
+    protected String membership;
 
     // Accessor methods
     public String getuserID() {
