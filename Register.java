@@ -11,16 +11,16 @@ public class Register {
         return String.format("%04d", randomUserId);
     }
 
-    public static void registerUser(String fullName, String phoneNumber){
+    public static void registerUser(String fullName, String phoneNumber, String walletAddress){
         Scanner sc = new Scanner(System.in);
         String filePath = "accounts.txt";
         String userId = generateRandomId();
         String otp = generateRandomId();
 
-        String WritingContent = userId + "/" + fullName + "/" + phoneNumber + "/" + otp + "/" + 0.0;
+        String WritingContent = userId + "/" + fullName + "/" + phoneNumber + "/" + otp + "/" + 0.0 + "/" + walletAddress;
 
         Customer user1 = new Customer(userId, fullName, phoneNumber, otp, 0.0, "0xabced");
-        System.out.println(user1);
+        //System.out.println(user1);
 
         try {
             // Create a FileWriter in append mode by passing true as the second parameter

@@ -5,6 +5,7 @@ public class TestAuth {
         Scanner sc = new Scanner(System.in);
         String tmpFullName;
         String tmpPhoneNumber;
+        String tmpWalletAddress;
         String tmpOtp;
         int choice;
 
@@ -28,8 +29,12 @@ public class TestAuth {
                     tmpPhoneNumber = sc.nextLine();
                     System.out.println("");
                 }while(Login.verifyPhoneNumber(tmpPhoneNumber));
+
+                System.out.print("Input Wallet Address: ");
+                tmpWalletAddress = sc.nextLine();
+                System.out.println("");
                 
-                Register.registerUser(tmpFullName, tmpPhoneNumber);
+                Register.registerUser(tmpFullName, tmpPhoneNumber, tmpWalletAddress);
                 
                 break;
 

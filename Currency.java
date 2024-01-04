@@ -1,4 +1,11 @@
-public class Currency {
+interface CurrencyInterface{
+    public String getCode();
+    public String getSymbol();
+    public double getExchangeRate();
+    public double convert(double amount, Currency targetCurrency);
+}
+
+public class Currency implements CurrencyInterface{
     private String code;
     private String symbol;
     private double exchangeRate;
