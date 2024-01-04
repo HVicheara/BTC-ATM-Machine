@@ -25,7 +25,8 @@ public class Login {
                 // Process the line as needed
                 // System.out.println(line);
                 String[] parts = line.split("/");
-                Customer newCustomer = new Customer(parts[0], parts[1], parts[3], parts[4]);
+                Customer newCustomer = new Customer(parts[0], parts[1], parts[3]);
+                
                 userList.add(newCustomer);
             }
 
@@ -102,8 +103,10 @@ public class Login {
         if (isAuthenticated) {
             
             System.out.println("User is logged in successfully.");
+            System.out.println();
         } else {
             System.out.println("Please enter a valid OTP.");
+            System.out.println();
         }
     }
 }

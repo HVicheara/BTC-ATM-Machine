@@ -7,7 +7,6 @@ public class Customer extends User {
     protected String membership;
     protected int loyaltyPoints;
 
-
     // Add Currency
     Currency btc = Currency.getCurrencyByCode("BTC");
     Currency usd = Currency.getCurrencyByCode("USD");
@@ -26,21 +25,41 @@ public class Customer extends User {
         this.loyaltyPoints = 0;
     }
 
-    public Customer(String userID, String fullName, String phoneNumber, String otp) {
+    public Customer(String fullName, String phoneNumber, String walletAddress, String membership) {
+        this.phoneNumber = phoneNumber;
+        this.fullName = fullName;
+        this.userID = getUserIDByPhoneNumFromAccountsFile();
+        this.otp = getOtpFromAccountsFile();
+        this.balance = getBalanceFromAccountsFile();
+        this.role = "customer";
+        this.walletAddress = walletAddress;
+        this.membership = membership;
+        this.loyaltyPoints = 0;
+    }
+
+    public Customer(String userID, String fullName, String phoneNumber) {
         this.userID = userID;
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
-        this.otp = otp;
+        this.otp = getOtpFromAccountsFile();
         this.balance = getBalanceFromAccountsFile();
-        this.membership = "Silver";
-        this.loyaltyPoints = 0;
+        this.membership = getMembershipFromAccountsFile();
+        this.loyaltyPoints = getLoyaltyPointsFromAccountsFile();
     }
     
     public Customer(String phoneNumber, String otp) {
         this.phoneNumber = phoneNumber;
         this.otp = otp;
-        this.loyaltyPoints = 0;
-        this.membership = "Silver";
+        this.userID = getUserIDByPhoneNumFromAccountsFile();
+        System.out.println("UserID: " + userID);
+        this.fullName = getFullNameFromAccountsFile();
+        System.out.println("Full Name: " + fullName);
+        
+        System.out.println("Phone Number: " + phoneNumber);
+        
+        this.loyaltyPoints = getLoyaltyPointsFromAccountsFile();
+        this.balance = getBalanceFromAccountsFile();
+        this.membership = getMembershipFromAccountsFile();
     }
 
     public void withdraw(double btcAmount){
@@ -163,6 +182,28 @@ public class Customer extends User {
         }
     }
 
+    private String getUserIDByPhoneNumFromAccountsFile() {
+        try (BufferedReader reader = new BufferedReader(new FileReader("accounts.txt"))) {
+            String line;
+            boolean isFirstRow = true;
+            while ((line = reader.readLine()) != null) {
+                if (isFirstRow) {
+                    isFirstRow = false;
+                    continue; // Skip the first row
+                }
+
+                String[] parts = line.split("/");
+                if (parts.length == 9 && parts[3].equals(phoneNumber)) {
+                    return parts[0]; // Return the balance from the file
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
     private double getBalanceFromAccountsFile() {
         try (BufferedReader reader = new BufferedReader(new FileReader("accounts.txt"))) {
             String line;
@@ -182,8 +223,117 @@ public class Customer extends User {
             e.printStackTrace();
         }
 
-        // Return 0.0 if the user is not found or if there's an error
         return 0.0;
+    }
+
+    private String getFullNameFromAccountsFile() {
+        try (BufferedReader reader = new BufferedReader(new FileReader("accounts.txt"))) {
+            String line;
+            boolean isFirstRow = true;
+            while ((line = reader.readLine()) != null) {
+                if (isFirstRow) {
+                    isFirstRow = false;
+                    continue; // Skip the first row
+                }
+
+                String[] parts = line.split("/");
+                if (parts.length == 9 && parts[0].equals(userID)) {
+                    return parts[1]; // Return the balance from the file
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    private String getUserIDFromAccountsFile() {
+        try (BufferedReader reader = new BufferedReader(new FileReader("accounts.txt"))) {
+            String line;
+            boolean isFirstRow = true;
+            while ((line = reader.readLine()) != null) {
+                if (isFirstRow) {
+                    isFirstRow = false;
+                    continue; // Skip the first row
+                }
+
+                String[] parts = line.split("/");
+                if (parts.length == 9 && parts[0].equals(userID)) {
+                    return parts[0]; // Return the balance from the file
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    private String getMembershipFromAccountsFile() {
+        try (BufferedReader reader = new BufferedReader(new FileReader("accounts.txt"))) {
+            String line;
+            boolean isFirstRow = true;
+            while ((line = reader.readLine()) != null) {
+                if (isFirstRow) {
+                    isFirstRow = false;
+                    continue; // Skip the first row
+                }
+
+                String[] parts = line.split("/");
+                if (parts.length == 9 && parts[0].equals(userID)) {
+                    return parts[7]; // Return the balance from the file
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    private String getOtpFromAccountsFile() {
+        try (BufferedReader reader = new BufferedReader(new FileReader("accounts.txt"))) {
+            String line;
+            boolean isFirstRow = true;
+            while ((line = reader.readLine()) != null) {
+                if (isFirstRow) {
+                    isFirstRow = false;
+                    continue; // Skip the first row
+                }
+
+                String[] parts = line.split("/");
+                if (parts.length == 9 && parts[0].equals(userID)) {
+                    return parts[4]; // Return the balance from the file
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    private int getLoyaltyPointsFromAccountsFile() {
+        try (BufferedReader reader = new BufferedReader(new FileReader("accounts.txt"))) {
+            String line;
+            boolean isFirstRow = true;
+            while ((line = reader.readLine()) != null) {
+                if (isFirstRow) {
+                    isFirstRow = false;
+                    continue; // Skip the first row
+                }
+
+                String[] parts = line.split("/");
+                if (parts.length == 9 && parts[0].equals(userID)) {
+                    return Integer.parseInt(parts[8]); // Return the balance from the file
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return 0;
     }
 
     public String getMembership() {

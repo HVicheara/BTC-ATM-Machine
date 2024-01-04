@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Auth {
-    public static void start() {
+    public static Customer start () {
         Scanner sc = new Scanner(System.in);
         String tmpFullName;
         String tmpPhoneNumber;
@@ -12,11 +12,11 @@ public class Auth {
 
         System.out.println("1. Register");
         System.out.println("2. Login");
-        System.out.println("Other. Quit");
+        System.out.println("3. Quit");
         System.out.print("Input: ");
         choice = sc.nextInt();
         System.out.println("");
-        String tmp = sc.nextLine();
+        sc.nextLine();
         
 
         switch (choice) {
@@ -41,17 +41,17 @@ public class Auth {
                 System.out.println("");
                 
                 Register.registerUser(tmpFullName, tmpPhoneNumber, tmpWalletAddress, tmpMembership);
-                
-                break;
+                Customer newUser = new Customer(tmpFullName, tmpPhoneNumber, tmpWalletAddress, tmpMembership);
+
+                return newUser;
 
             case 2:
-
                 System.out.print("Input Phone Number: ");
                 tmpPhoneNumber = sc.nextLine();
                 System.out.println("");
 
                 Login.sendOtp(tmpPhoneNumber);
-                
+
                 System.out.print("Input OTP: ");
                 tmpOtp = sc.nextLine();
                 System.out.println("");
@@ -59,10 +59,15 @@ public class Auth {
                 Customer tmpUser = new Customer(tmpPhoneNumber, tmpOtp);
                 
                 Login.loginUser(tmpUser);
+
+                return tmpUser;
+            case 3:
+                System.out.println("Exiting Bitcoin ATM. Goodbye!");
+                break;
             default:
                 break;
         }
-
-        sc.close();
+      
+        return null;
     }
 }
