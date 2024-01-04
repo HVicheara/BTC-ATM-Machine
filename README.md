@@ -26,15 +26,32 @@ The objective of this project is as follow:
 8. Auth Class: Auth flow for BTM
 9. AnonClass: Anonymous Inner Class
 
+# Inheritance
+- User is the super class 
+- Admin & Customer are the sub class of User
+
 # Encapsulation
 - Getter & Setter functions in every classes
 - Usage of Public, Private, Protected accessor
 
-# Polymorphism
+# Abstraction
+- User is an abstract class
+- displayAllTransactions() is an abstract method
 
+# Polymorphism
+- Overriding functions: toString(), equals()
+- Overloading functions: checkBalance() in Customer Class.
 
 # Exception Handling
 - IOException for reading files error
 - NoSuchElementException for No User Found (Query Data)
 - NumberFormatException
 
+# File I/O
+- accounts.txt
+- transactions.txt
+
+# Static Methods
+- Login class
+- Register class
+- Currency class
