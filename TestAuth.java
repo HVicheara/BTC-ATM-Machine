@@ -6,6 +6,7 @@ public class TestAuth {
         String tmpFullName;
         String tmpPhoneNumber;
         String tmpWalletAddress;
+        String tmpMembership;
         String tmpOtp;
         int choice;
 
@@ -33,8 +34,13 @@ public class TestAuth {
                 System.out.print("Input Wallet Address: ");
                 tmpWalletAddress = sc.nextLine();
                 System.out.println("");
+
+                System.out.print("Here are our available membership plans: Silver, Gold, Diamond");
+                System.out.print("Input Your Preferred Membership: ");
+                tmpMembership = sc.nextLine();
+                System.out.println("");
                 
-                Register.registerUser(tmpFullName, tmpPhoneNumber, tmpWalletAddress);
+                Register.registerUser(tmpFullName, tmpPhoneNumber, tmpWalletAddress, tmpMembership);
                 
                 break;
 

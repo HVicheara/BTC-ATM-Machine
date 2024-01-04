@@ -5,13 +5,13 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Register {
-    public static void registerUser(String fullName, String phoneNumber, String walletAddress){
+    public static void registerUser(String fullName, String phoneNumber, String walletAddress, String membership){
         Scanner sc = new Scanner(System.in);
         String filePath = "accounts.txt";
         String userId = IdGenerator.generateUserId();
         String otp = IdGenerator.generateOtp();
 
-        String WritingContent = userId + "/" + fullName + "/" + phoneNumber + "/" + otp + "/" + 0.0 + "/" + walletAddress;
+        String WritingContent = userId + "/" + fullName + "/" + phoneNumber + "/" + otp + "/" + 0.0 + "/" + walletAddress + "/" + membership + "/" + 0;
 
         System.out.println("OTP: " + otp);
 
