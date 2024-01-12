@@ -32,7 +32,7 @@ The objective of this project is as follow:
 
 # Inheritance
 - User is the super class 
-- Admin & Customer are the sub class of User, there are 2 sub class to super class User because there are 2 different kind of user where the admin can manage every account and for customer, they can only manage their own account. 
+- Admin & Customer are the sub class of User, we use inheritance for better code structure and also for the difference between the 2 kind of User. The difference between the 2 sub-class is that Admin can manage/view every transaction of users while for customer, they can only manage/view their own transaction.
 
 # Encapsulation
 - Getter & Setter functions in every classes
