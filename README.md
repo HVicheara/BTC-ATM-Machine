@@ -37,7 +37,7 @@ The objective of this project is as follow:
 # Encapsulation
 - Getter & Setter functions in every classes
 - Usage of Public, Private, Protected accessor is to allow us to encapsulate our code and define clear visibility for classes and members.
-- We use Public in
+- We use Public in User class getUserID() and for every ther accessore, so that Customer class and Adim class can use it as well.
 
 # Abstraction
 - User is an abstract class
