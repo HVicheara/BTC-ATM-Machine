@@ -8,12 +8,16 @@ The objective of this project is as follow:
   + Provide a seamless experience for users, regardless of their level of familiarity with cryptocurrencies.
 
 # System Main Functions
-
-1. Login
-2. Register Account
-3. Deposit
-4. Withdraw
-5. Display User Wallet
+1. Authentication
+   + Login
+   + Register Account
+2. User (Customer)
+   + Deposit
+   + Withdraw
+   + Display User Wallet
+   + Display Transaction
+3. User (Admin)
+   + Display all transaction
 
 # Classes List:
 1. User Class: Admin & Customer (Sub Class)
