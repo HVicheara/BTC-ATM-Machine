@@ -61,3 +61,12 @@ The objective of this project is as follow:
 - Login class
 - Register class
 - Currency class
+
+# Interface 
+- Authentication Panel:
+    + Login panel
+    + Register panel
+- Menu Panel
+- Deposit Panel
+- Withdraw Panel
+- View Profile panel
